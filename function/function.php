@@ -21,7 +21,7 @@ function straddslashes($str)
 
 function C($name, $method)
 {
-    require_once('/libs/Controller/' . $name . 'Controller.class.php');
+    require_once('libs/Controller/' . $name . 'Controller.class.php');
     $name .= 'Controller';
     $obj = new $name();
     $obj->$method();
@@ -29,7 +29,7 @@ function C($name, $method)
 
 function M($name)
 {
-    require_once('/libs/Model/' . $name . 'Model.class.php');
+    require_once('libs/Model/' . $name . 'Model.class.php');
     $name .= 'Model';
     $obj = new $name();
     return $obj;
@@ -37,7 +37,7 @@ function M($name)
 
 function V($name)
 {
-    require_once('/libs/View/' . $name . 'View.class.php');
+    require_once('libs/View/' . $name . 'View.class.php');
     $name .= 'View';
     $obj = new $name();
     return $obj;
@@ -45,7 +45,7 @@ function V($name)
 
 function ORG($path, $name, $params = array())
 {
-    require_once('/libs/ORG/' . $path . $name . '.class.php');
+    require_once('libs/ORG/' . $path . $name . '.class.php');
     $obj = new $name;
 
     if (!empty($params)) {

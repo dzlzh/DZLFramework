@@ -32,14 +32,14 @@ class start
         DB::init(self::$config['dbtype'], self::$config['dbconfig']);
     }
 
-    private static function init_controllor()
+    private static function init_controller()
     {
-        return self::$controller = isset($_GET['c']) ? straddslashes($_GET['c']) : 'index';
+        return self::$controller = isset($_GET['c']) ? straddslashes($_GET['c']) : self::$config['controller'];
     }
 
     private static function init_method()
     {
-        return self::$method = isset($_GET['m']) ? straddslashes($_GET['m']) : 'index';
+        return self::$method = isset($_GET['m']) ? straddslashes($_GET['m']) : self::$config['method'];
     }
     
     
@@ -48,7 +48,7 @@ class start
     {
         self::$config = $config;
         self::init_db();
-        self::init_controllor();
+        self::init_controller();
         self::init_method();
         C(self::$controller, self::$method);
     }
