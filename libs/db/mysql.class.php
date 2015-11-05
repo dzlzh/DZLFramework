@@ -42,14 +42,14 @@ class mysql
      *  @param  string $dbpwd      密码
      *  @param  string $dbname     数据库名
      *  @param  string $dbcharset  字符编码
-     *  @param  string $debug      错误调试
+     *  @param  string $dbdebug      错误调试
      *  @return bool   连接成功或不成功
      */
     function connect($config)
     {
         extract($config);
 
-        if (!empty($debug)) {
+        if (!empty($dbdebug)) {
             $this->displayError = true;
         }
 
