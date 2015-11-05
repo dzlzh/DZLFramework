@@ -16,6 +16,7 @@
 
 $paths = array(
     'function/function.php',
+    'function/fileFunction.php',
     'libs/core/DB.class.php',
     'libs/db/mysql.class.php',
     'libs/db/mysql.class.php',
