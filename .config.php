@@ -1,7 +1,11 @@
 <?php
 $config = array(
-    $dbtype => 'mysql',
-    $dbconfig => array(
+    'controller' => 'index',
+    'method'     => 'index',
+
+    'dbtype'     => 'mysql',
+    'dbconfig'   => array(
+
         'dbhost'    => '',
         'dbuser'    => '',
         'dbpwd'     => '',
