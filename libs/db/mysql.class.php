@@ -60,8 +60,9 @@ class mysql
         if (!mysql_select_db($dbname, $con)) {
             return $this->error(mysql_error());
         }
-
-        mysql_query("set name " . $dbcharset);
+        if (!empty($dbcharset)) {
+            mysql_query("set name " . $dbcharset);
+        }
         return true;
     }
 
