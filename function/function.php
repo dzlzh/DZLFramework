@@ -58,3 +58,19 @@ function ORG($path, $name, $params = array())
     return $obj;
 }
 
+
+/**
+ *  删除字符首尾\n,字符中的空格,\t,\r
+ * 
+ *  @param string $str
+ *  @return string
+ */ 
+
+function trimall($str)
+{
+    $str = trim($str, "\n");
+    $qian=array(" ","　","\t","\r");
+    $hou=array("","","","");
+    return str_replace($qian,$hou,$str);    
+}
+

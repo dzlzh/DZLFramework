@@ -47,12 +47,13 @@ class start
     public static function run($config)
     {
         self::$config = $config;
+        foreach (self::$config['paths'] as $path) {
+            include_once(self::$config['dir'] . '/' . $path);
+        }
         self::init_db();
         self::init_controller();
         self::init_method();
         C(self::$controller, self::$method);
     }
-    
-    
 
 } // END class 

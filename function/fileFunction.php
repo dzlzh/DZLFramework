@@ -14,7 +14,7 @@
  */
 
 /**
- *  »ñÈ¡Ä¿Â¼ÖĞµÄÎÄ¼ş
+ *  è·å–ç›®å½•ä¸­çš„æ–‡ä»¶
  *
  *  @param  string $path
  *  @return array  $files
@@ -36,7 +36,7 @@ function getFilesName($path)
 }
 
 /**
- *  ¶ÔÏó×ªÊı×é
+ *  å¯¹è±¡è½¬æ•°ç»„
  *
  *  @param   object $obj
  *  @return  array  $arr
@@ -56,7 +56,7 @@ function object_to_array($obj)
 
 
 /**
- *  ½âÑ¹¶ÁÈ¡°ÑXML×ª³ÉÊı×é
+ *  è§£å‹è¯»å–æŠŠXMLè½¬æˆæ•°ç»„
  *
  *  @param  string $path
  *  @return array  $xml
@@ -75,10 +75,10 @@ function unzip($path)
             // echo "Compressed Size:    " . zip_entry_compressedsize($zip_entry) . "\n";
             // echo "Compression Method: " . zip_entry_compressionmethod($zip_entry) . "\n";
 
-            if(strstr(zip_entry_name($zip_entry),'°¸¼ş²éÑ¯\ajcx_') && zip_entry_open($zip, $zip_entry, "r") ){
+            if(strstr(iconv("gbk", "UTF-8//TRANSLIT", zip_entry_name($zip_entry)),'æ¡ˆä»¶æŸ¥è¯¢\ajcx_') && zip_entry_open($zip, $zip_entry, "r") ){
                 // echo "File Contents:\n";
                 $buf = zip_entry_read($zip_entry, zip_entry_filesize($zip_entry));
-                $xml[] = object_to_array(simplexml_load_string($buf));
+                $xml[] = $buf;
                 zip_entry_close($zip_entry);
                 unset($buf);
             }
@@ -88,3 +88,5 @@ function unzip($path)
     }
     return $xml;
 }
+
+
