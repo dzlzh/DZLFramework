@@ -40,17 +40,17 @@ class DB
         return self::$db->findOne($query);
     }
     
-    public static function insert($table, $arr)
+    public static function insert($table, $arr, $insertId = true)
     {
-        return self::$db->insert($table, $arr);
+        return self::$db->insert($table, $arr, $insertId);
     }
 
-    public static function update($table, $arr, $where)
+    public static function update($table, $arr, $where = null)
     {
         return self::$db->update($table, $arr, $where);
     }
     
-    public static function del($table, $where)
+    public static function del($table, $where = null)
     {
         return self::$db->del($table, $where);
     }

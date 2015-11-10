@@ -116,7 +116,7 @@ class mysql
      *  @param  array  $arr    插入数组
      *  @return int    成功返回产生的ID,失败返回0
      */
-    function insert($table, $arr)
+    function insert($table, $arr, $insertId)
     {
         foreach ($arr as $key=>$value) {
             $value = mysql_real_escape_string($value);
@@ -127,6 +127,12 @@ class mysql
         $keys = implode(",", $keyArr);
         $values = implode(",", $valueArr);
         $sql = "INSERT INTO " . $table . "(" . $keys . ") VALUES(" . $values . ")";
+        if ($insertId) {
+            return $this->query($sql) ? mysql_insert_id() : false;
+        } else {
+            return $this->query($sql);
+        }
+        
         $this->query($sql);
         return mysql_insert_id();
 
@@ -140,7 +146,7 @@ class mysql
      *  @param  string $where 修改条件
      *  @return bool   修改是否成功
      */
-    function update($table, $arr, $where = null)
+    function update($table, $arr, $where)
     {
         foreach ($arr as $key=>$value) {
             $value = mysql_real_escape_string($value);
@@ -164,7 +170,7 @@ class mysql
      *  @param  string $where 删除条件
      *  @return 删除是否成功
      */
-    function del($table, $where = null)
+    function del($table, $where)
     {
         $sql = "DELETE FROM " . $table;
         if (!empty($where)) {
