@@ -28,10 +28,11 @@ function getFilesName($path)
     while (($file = readdir($handle)) != false) {
 
         if ($file != '.' && $file != '..') {
-            $files[] = $file;
+            $files[filemtime($path . DIRECTORY_SEPARATOR . $file)] = $file;
         }
     }
     closedir();
+    sort($files);
     return $files;
 }
 
