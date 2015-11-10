@@ -159,7 +159,6 @@ class mysql
         if (!empty($where)) {
             $sql .= " WHERE " . $where;
         }
-
         return $this->query($sql);
     }
 
