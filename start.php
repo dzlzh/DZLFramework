@@ -13,6 +13,7 @@
  *  +--------------------------------------------------------------
  */
 
+date_default_timezone_set('PRC');
 session_start();
 $currentdir = dirname(__FILE__);
 include_once($currentdir . '/include.list.php');
