@@ -7,7 +7,7 @@
  *  +--------------------------------------------------------------
  *  | Filename: start.php
  *  +--------------------------------------------------------------
- *  | Last modified: 2015-11-05 13:50
+ *  | Last modified: 2015-11-10 16:36
  *  +--------------------------------------------------------------
  *  | Description: start framework
  *  +--------------------------------------------------------------
@@ -32,6 +32,12 @@ class start
     {
         DB::init(self::$config['dbtype'], self::$config['dbconfig']);
     }
+    
+    private static function init_view()
+    {
+        VIEW::init('Smarty', self::$config['viewconfig']);
+    }
+    
 
     private static function init_controller()
     {
@@ -52,6 +58,7 @@ class start
             include_once(self::$config['dir'] . '/' . $path);
         }
         self::init_db();
+        self::init_view();
         self::init_controller();
         self::init_method();
         C(self::$controller, self::$method);

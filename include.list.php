@@ -18,7 +18,9 @@ $paths = array(
     'function/function.php',
     'function/fileFunction.php',
     'libs/core/DB.class.php',
+    'libs/core/VIEW.class.php',
     'libs/db/mysql.class.php',
     'libs/db/mysql.class.php',
     'libs/db/POD.class.php',
+    'libs/view/Smarty/Smarty.class.php',
 );
