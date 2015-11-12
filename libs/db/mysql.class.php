@@ -132,10 +132,6 @@ class mysql
         } else {
             return $this->query($sql);
         }
-        
-        $this->query($sql);
-        return mysql_insert_id();
-
     }
 
     /**
