@@ -74,7 +74,7 @@ function trimall($str)
     return str_replace($qian,$hou,$str);    
 }
 
-function page($objname, $p)
+function page($objname, $p = 1)
 {
     $obj = M($objname);
     $page['num'] = $obj->count();

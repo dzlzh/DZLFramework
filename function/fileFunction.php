@@ -90,4 +90,27 @@ function unzip($path)
     return $xml;
 }
 
+function fileToString($file)
+{
+    $fileString = file_get_contents($file);
+    return $fileString;
+}
 
+
+function fileUploadError($errorNum){
+
+    switch($errorNum){
+        case  4: $error .= "没有文件被上传"; break;
+        case  3: $error .= "文件只被部分上传"; break;
+        case  2: $error .= "上传文件超过了HTML表单中MAX_FILE_SIZE选项指定的值"; break;
+        case  1: $error .= "上传文件超过了php.ini 中upload_max_filesize选项的值"; break;
+        case -1: $error .= "末充许的类型"; break;
+        case -2: $error .= "文件过大，上传文件不能超过5M"; break;
+        case -3: $error .= "上传失败"; break;
+        case -4: $error .= "建立存放上传文件目录失败，请重新指定上传目录"; break;
+        case -5: $error .= "必须指定上传文件的路径"; break;
+        default: $error .=  "末知错误";
+    }
+
+    return $error;
+} 
