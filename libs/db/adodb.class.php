@@ -1,0 +1,47 @@
+<?PHP
+/**
+ *  +--------------------------------------------------------------
+ *  | Copyright (c) 2015 DZLZH All rights reserved.
+ *  +--------------------------------------------------------------
+ *  | Author: DZLZH <dzlzh@null.net>
+ *  +--------------------------------------------------------------
+ *  | Filename: adodb.class.php
+ *  +--------------------------------------------------------------
+ *  | Last modified: 2015-11-14 19:34
+ *  +--------------------------------------------------------------
+ *  | Description: 
+ *  +--------------------------------------------------------------
+ */
+
+
+class adodb
+{
+
+    private $con;
+
+    public function connect($config)
+    {
+        extract($config);
+        $this->con = NewADOConnection('pdo');
+        $this->con->debug = $dbdebug;
+        return $this->con->Connect('mysql:host=' . $dbhost, $dbuser, $dbpwd, $dbname);
+    }
+
+    public function query($sql, $arr)
+    {
+        return $this->con->Execute($sql, $arr);
+    }
+
+    public function findAll($data)
+    {
+        return $data->GetAll();
+    }
+
+    public function findOne($data)
+    {
+        $data = $data->GetRows();
+        return $data[0];
+    }
+    
+    
+} // END class adodb

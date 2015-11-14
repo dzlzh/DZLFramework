@@ -7,7 +7,7 @@
  *  +--------------------------------------------------------------
  *  | Filename: mysql.class.php
  *  +--------------------------------------------------------------
- *  | Last modified: 2015-11-05 11:42
+ *  | Last modified: 2015-11-14 19:56
  *  +--------------------------------------------------------------
  *  | Description: mysql class
  *  +--------------------------------------------------------------
@@ -25,7 +25,7 @@ class mysql
      *  @param  string $error
      *  @return null
      */
-    function error($error)
+    public function error($error)
     {
         if($this->displayError) {
             die("error: " . $error);
@@ -45,7 +45,7 @@ class mysql
      *  @param  string $dbdebug      错误调试
      *  @return bool   连接成功或不成功
      */
-    function connect($config)
+    public function connect($config)
     {
         extract($config);
 
@@ -72,7 +72,7 @@ class mysql
      *  @param  string $sql sql语句
      *  @return 成功返回资源，失败返回false
      */
-    function query($sql)
+    public function query($sql, $arr)
     {
         if (!($query = mysql_query($sql))) {
             return $this->error($sql . "\n" . mysql_error());
@@ -87,7 +87,7 @@ class mysql
      *  @param  $query       资源
      *  @return array $list  结果集关联数组
      */
-    function findAll($query)
+    public function findAll($query)
     {
         while ($res = mysql_fetch_array($query, MYSQL_ASSOC)) {
             $list[] = $res;
@@ -102,7 +102,7 @@ class mysql
      *  @param  $query       资源
      *  @return array $list  单条结果关联数组
      */
-    function findOne($query)
+    public function findOne($query)
     {
         $res = mysql_fetch_array($query, MYSQL_ASSOC);
         return $res;
@@ -116,7 +116,7 @@ class mysql
      *  @param  array  $arr    插入数组
      *  @return int    成功返回产生的ID,失败返回0
      */
-    function insert($table, $arr, $insertId)
+    public function insert($table, $arr, $insertId)
     {
         foreach ($arr as $key=>$value) {
             $value = mysql_real_escape_string($value);
@@ -142,7 +142,7 @@ class mysql
      *  @param  string $where 修改条件
      *  @return bool   修改是否成功
      */
-    function update($table, $arr, $where)
+    public function update($table, $arr, $where)
     {
         foreach ($arr as $key=>$value) {
             $value = mysql_real_escape_string($value);
@@ -165,7 +165,7 @@ class mysql
      *  @param  string $where 删除条件
      *  @return 删除是否成功
      */
-    function del($table, $where)
+    public function del($table, $where)
     {
         $sql = "DELETE FROM " . $table;
         if (!empty($where)) {

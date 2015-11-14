@@ -11,7 +11,6 @@ $config = array(
     'dbtype'     => 'mysql',
 
     'dbconfig'   => array(
-
         'dbhost'    => '',
         'dbuser'    => '',
         'dbpwd'     => '',

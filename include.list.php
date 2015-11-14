@@ -22,5 +22,7 @@ $paths = array(
     'libs/db/mysql.class.php',
     'libs/db/mysql.class.php',
     'libs/db/POD.class.php',
+    'libs/db/adodb5/adodb.inc.php',
+    'libs/db/adodb.class.php',
     'libs/view/Smarty/Smarty.class.php',
 );
