@@ -39,7 +39,7 @@ class DB
         $query = self::$db->query($sql, $arr);
         return self::$db->findOne($query);
     }
-    
+
     public static function insert($table, $arr, $insertId = true)
     {
         return self::$db->insert($table, $arr, $insertId);

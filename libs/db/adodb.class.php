@@ -42,6 +42,16 @@ class adodb
         $data = $data->GetRows();
         return $data[0];
     }
+
+    public function insert($table, $arr, $insertId)
+    {
+        return $this->con->AutoExecute($table, $arr, 'INSERT');
+    }
+    
+    public function update($table, $arr, $where)
+    {
+        return $this->con->AutoExecute($table, $arr, 'UPDATE', $where);
+    }
     
     
 } // END class adodb
