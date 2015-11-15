@@ -14,6 +14,7 @@
  */
 
 date_default_timezone_set('PRC');
+set_magic_quotes_runtime(false);
 session_start();
 $currentdir = dirname(__FILE__);
 include_once($currentdir . '/include.list.php');

@@ -16,7 +16,8 @@
 
 function straddslashes($str)
 {
-    return (!get_magic_quotes_gpc()) ? addslashes($str) : $str;
+    // return (!get_magic_quotes_gpc()) ? addslashes($str) : $str;
+    return $str;
 }
 
 function C($name, $method)
