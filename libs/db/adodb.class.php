@@ -52,6 +52,12 @@ class adodb
     {
         return $this->con->AutoExecute($table, $arr, 'UPDATE', $where);
     }
+
+    public function qstr($string)
+    {
+        return $this->con->qstr($string);
+    }
+    
     
     
 } // END class adodb

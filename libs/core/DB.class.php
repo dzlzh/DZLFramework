@@ -54,6 +54,11 @@ class DB
     {
         return self::$db->del($table, $where);
     }
+
+    public static function qstr($string)
+    {
+        return self::$db->qstr($string);
+    }
     
     
 } // END class 
