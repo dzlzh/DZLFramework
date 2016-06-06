@@ -12,6 +12,7 @@ $config = array(
 
     'dbconfig'   => array(
         'dbhost'    => '',
+        'dbport'    => '3306',
         'dbuser'    => '',
         'dbpwd'     => '',
         'dbname'    => '',

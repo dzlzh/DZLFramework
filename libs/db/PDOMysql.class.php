@@ -70,7 +70,7 @@ class PDOMysql
             $parameters[$key] = ':' . $value;
         }
         $parameters = implode(',', $parameters);
-        $sql = 'INSERT `' . $table . '`('. $fields . ') VALUE(' . $parameters . ')';
+        $sql = 'INSERT INTO `' . $table . '` (' . $fields . ') VALUE (' . $parameters . ')';
         $stmt = $this->query($sql, $arr);
         $errorCode = $stmt->errorCode();
         if ($errorCode !== '00000') {
