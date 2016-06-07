@@ -72,15 +72,10 @@ class PDOMysql
         $parameters = implode(',', $parameters);
         $sql = 'INSERT INTO `' . $table . '` (' . $fields . ') VALUE (' . $parameters . ')';
         $stmt = $this->query($sql, $arr);
-        $errorCode = $stmt->errorCode();
-        if ($errorCode !== '00000') {
-            $errorInfo = $stmt->errorInfo();
-            $errorMsg = 'ERROR '. $errorInfo[1] . ' (' . $errorInfo[0] . '):' . $errorInfo[2];
-            return $errorMsg;
-        } elseif ($insertID) {
+        if ($insertID) {
             return $this->con->lastInsertId();
         } else {
-            return $stmt->rowCount();
+            return self::errorMsg($stmt);   
         }
     }
 
@@ -93,14 +88,20 @@ class PDOMysql
             $parameters[$key] = $fields[$key] . '=:' . $value;
         }
         $parameters = implode(',', $parameters);
-        $sql = 'UPDATE `' . $table . '` SET ' . $parameters . ' WHERE ' . $where;
+        $sql = 'UPDATE `' . $table . '` SET ' . $parameters;
+        if (!empty($where)) {
+            $sql .= ' WHERE ' . $where;
+        }
         $stmt = $this->query($sql, $arr);
         return self::errorMsg($stmt);
     }
 
     public function del($table, $where)
     {
-        $sql = 'DELETE FROM `' . $table . '` WHERE ' . $where;
+        $sql = 'DELETE FROM `' . $table . '`';
+        if (!empty($where)) {
+            $sql .= ' WHERE ' . $where;
+        }
         $stmt = $this->query($sql, null);
         return self::errorMsg($stmt);
     }
