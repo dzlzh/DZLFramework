@@ -13,7 +13,7 @@ return [
     'default_controller' => 'Index', //默认控制器
     'default_action' => 'index', //默认操作方法
     'url_type' => 2, 
-    //RUL 模式:
+    //URL 模式:
     //1: 普通模式,采用传统的 URL 参数模式
     //2: PATHINFO 模式,也是默认模式
 
