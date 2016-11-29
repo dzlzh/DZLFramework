@@ -14,4 +14,4 @@ $loader->addNamespace('core', ROOT_PATH . 'sys' . DS . 'core');
 $loader->addNamespace('home', APP_PATH . 'home');
 $loader->register(); //注册命名空间
 
-
+core\Config::set(include CONF_PATH . 'config.php');
